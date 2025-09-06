@@ -62,9 +62,10 @@
       // For example:
       //
       // function onQrScanSuccess(decodedText) {
+          sendAttendanceData(decodedText);
+        *(Assuming the variable holding the QR data is named `decodedText`)*
       //   // decodedText is the data from the QR code.
-      //   // Now, we call our function to send it to the server.
-      //   sendAttendanceData(decodedText);
+      //   // Now, we call our function to send it to the server
       // }
   
     </script>
@@ -295,5 +296,6 @@
 </body>
 
 </html>
+
 
 
