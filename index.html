@@ -11,22 +11,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         <!-- You add this to your attendance.html file, right before the </body> tag -->
-<script>
-  // This defines the "mail carrier" function. It takes one piece of information:
-  // the text that was read from the QR code.
-  async function sendAttendanceData(qrCodeText) {
+    <script>
+      // This defines the "mail carrier" function. It takes one piece of information:
+      // the text that was read from the QR code.
+      async function sendAttendanceData(qrCodeText) {
 
-    // This is the address of your server's endpoint that is waiting for the data.
-    const serverUrl = 'http://localhost:3000/mark-attendance';
+        // This is the address of your server's endpoint that is waiting for the data.
+        const serverUrl = 'http://localhost:3000/mark-attendance';
 
-    // We package up the QR code data and the current time into an object.
-    // This is the "letter" we are sending.
-    const dataToSend = {
+            // We package up the QR code data and the current time into an object.
+        // This is the "letter" we are sending.
+        const dataToSend = {
       qrData: qrCodeText,
       timestamp: new Date().toLocaleString()
-    };
+        };
 
-    try {
+        try {
       // This is the core action: "fetch" sends the data to the server.
       // We tell it we're 'POST'ing data, that the data is in 'json' format,
       // and we attach the actual data in the 'body'.
@@ -38,36 +38,36 @@
         body: JSON.stringify(dataToSend),
       });
 
-      // We wait for the server's response and read it.
-      const result = await response.json();
+        // We wait for the server's response and read it.
+          const result = await response.json();
 
-      // If the server's response says { success: true, ... }
-      if (result.success) {
-        alert('Attendance marked successfully!');
-      } else {
+          // If the server's response says { success: true, ... }
+              if (result.success) {
+            alert('Attendance marked successfully!');
+          } else {
         // If the server's response says { success: false, ... }
         alert('Error: Could not mark attendance.');
-      }
-    } catch (error) {
+          }
+        } catch (error) {
       // This will happen if the server isn't running or there's a network problem.
       alert('A network error occurred. Is your server running?');
       console.error('Fetch error:', error);
-    }
-  }
+        }
+      }
 
-  // --- HOW TO USE IT ---
-  // In your QR scanner code, you must have a function that runs
-  // when a scan is successful. Inside that function, you call sendAttendanceData.
-  //
-  // For example:
-  //
-  // function onQrScanSuccess(decodedText) {
-  //   // decodedText is the data from the QR code.
-  //   // Now, we call our function to send it to the server.
-  //   sendAttendanceData(decodedText);
-  // }
+      // --- HOW TO USE IT ---
+      // In your QR scanner code, you must have a function that runs
+      // when a scan is successful. Inside that function, you call sendAttendanceData.
+      //
+      // For example:
+      //
+      // function onQrScanSuccess(decodedText) {
+      //   // decodedText is the data from the QR code.
+      //   // Now, we call our function to send it to the server.
+      //   sendAttendanceData(decodedText);
+      // }
   
-</script>
+    </script>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #111827; /* Dark background */
@@ -295,4 +295,5 @@
 </body>
 
 </html>
+
 
