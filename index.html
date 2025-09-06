@@ -197,8 +197,8 @@
                     inversionAttempts: "dontInvert",
                 });
 
-                // If a QR code is found
-                if (code) {
+                // If a QR code with actual data is found (this line is changed)
+                if (code && code.data) {
                     const currentTime = Date.now();
                     // Debounce: Prevents scanning the same code within 3 seconds
                     if (code.data !== lastScannedData || currentTime - lastScanTime > 3000) {
@@ -263,3 +263,4 @@
     </script>
 </body>
 </html>
+
